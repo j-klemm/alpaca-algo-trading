@@ -15,4 +15,10 @@ api = tradeapi.REST(
     base_url=endpoint
 )
 
-print(api.get_account())
+#print(api.get_account()) #Uncomment to see account info
+
+#api.submit_order('AAPL',5,'buy','market','gtc') #Uncomment to purchase 5 shares of Apple
+#print(api.list_positions()) #Uncomment to see current stock positions
+
+print(api.get_barset('MSFT','1D'))
+
