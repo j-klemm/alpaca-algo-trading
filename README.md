@@ -1,2 +1,1 @@
-# alpaca-algo-trading
-My Alpaca trading service
+My alpaca project for trading stock using alpaca's Python SDK
