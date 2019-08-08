@@ -1,15 +1,15 @@
 import alpaca_trade_api as tradeapi
 import configparser
-import datetime
-
+from iexfinance.stocks import Stock
+import sys
 configFile = '../resources/private-info.properties' #CHANGE TO api-config.properties or your own config file
 config = configparser.RawConfigParser()
 config.read(configFile)
 
 keyid = config.get('Config', 'keyid')
 secretKey = config.get('Config', 'secretkey')
-tradingEndpoint = config.get('Config','endpoint')
-dataEndpoint = 'https://data.alpaca.markets'
+tradingEndpoint = config.get('Config','tradingendpoint')
+dataEndpoint = config.get('Config','tradingendpoint')
 
 api = tradeapi.REST(
     key_id=keyid,
@@ -34,3 +34,7 @@ msftDict = msftData['MSFT']
 
 for bar in msftDict:
     print(str(bar.t.strftime('%m-%d %H:%M')) + ': ' + str(bar.o)) #Print all the 15 minute intervals with price at end of that interval
+
+iexToken = config.get('Config','iex_token')
+a=Stock("AAPL",token=iexToken)
+print(a.get_quote())
